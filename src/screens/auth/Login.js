@@ -11,7 +11,7 @@ import {
 import { LinearGradient } from "expo-linear-gradient";
 import { COLORS, ROUTES } from "../../constants";
 import Logo from "../../assets/icons/LOGO.png";
-const Login = () => {
+const Login = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.main}>
       <View style={styles.container}>
@@ -40,7 +40,10 @@ const Login = () => {
           </View>
 
           {/***************** FORGOT PASSWORD BUTTON *****************/}
-          <TouchableOpacity style={styles.forgotPassBtn}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate(ROUTES.FORGOT_PASSWORD)}
+            style={styles.forgotPassBtn}
+          >
             <Text style={styles.forgotPassText}>Forgot Password?</Text>
           </TouchableOpacity>
         </View>
