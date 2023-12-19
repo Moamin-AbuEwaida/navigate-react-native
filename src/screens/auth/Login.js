@@ -11,7 +11,10 @@ import {
 import { LinearGradient } from "expo-linear-gradient";
 import { COLORS, ROUTES } from "../../constants";
 import Logo from "../../assets/icons/LOGO.png";
-const Login = ({ navigation }) => {
+import { useNavigation } from "@react-navigation/native";
+
+const Login = (props) => {
+  const navigation = useNavigation();
   return (
     <SafeAreaView style={styles.main}>
       <View style={styles.container}>
@@ -33,7 +36,11 @@ const Login = ({ navigation }) => {
               end={{ y: 1.0, x: 0.0 }}
             >
               {/******************** LOGIN BUTTON *********************/}
-              <TouchableOpacity activeOpacity={0.7} style={styles.loginBtn}>
+              <TouchableOpacity
+                onPress={() => navigation.navigate(ROUTES.HOME)}
+                activeOpacity={0.7}
+                style={styles.loginBtn}
+              >
                 <Text style={styles.loginText}>Log In</Text>
               </TouchableOpacity>
             </LinearGradient>
@@ -41,7 +48,11 @@ const Login = ({ navigation }) => {
 
           {/***************** FORGOT PASSWORD BUTTON *****************/}
           <TouchableOpacity
-            onPress={() => navigation.navigate(ROUTES.FORGOT_PASSWORD)}
+            onPress={() =>
+              navigation.navigate(ROUTES.FORGOT_PASSWORD, {
+                userId: "X0001",
+              })
+            }
             style={styles.forgotPassBtn}
           >
             <Text style={styles.forgotPassText}>Forgot Password?</Text>
@@ -51,7 +62,9 @@ const Login = ({ navigation }) => {
         <View style={styles.footer}>
           <Text style={styles.footerText}> Don't have an account? </Text>
           {/******************** REGISTER BUTTON *********************/}
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => navigation.navigate(ROUTES.REGISTER)}
+          >
             <Text style={styles.signupBtn}>Sign Up</Text>
           </TouchableOpacity>
         </View>
