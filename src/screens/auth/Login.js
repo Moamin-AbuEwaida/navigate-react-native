@@ -6,18 +6,18 @@ import {
   TextInput,
   SafeAreaView,
   TouchableOpacity,
+  Image,
 } from "react-native";
-import LinearGradient from "react-native-linear-gradient";
+import { LinearGradient } from "expo-linear-gradient";
 import { COLORS, ROUTES } from "../../constants";
-import Logo from "../../assets/icons/LOGO.svg";
-
+import Logo from "../../assets/icons/LOGO.png";
 const Login = () => {
   return (
     <SafeAreaView style={styles.main}>
       <View style={styles.container}>
         <View style={styles.wFull}>
           <View style={styles.row}>
-            <Logo width={55} height={55} style={styles.mr7} />
+            <Image source={Logo} contentFit="cover" style={styles.mr7} />
             <Text style={styles.brandName}>Olors</Text>
           </View>
 
@@ -159,5 +159,7 @@ const styles = StyleSheet.create({
   },
   mr7: {
     marginRight: 7,
+    width: 55,
+    height: 55,
   },
 });
