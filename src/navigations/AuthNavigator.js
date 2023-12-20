@@ -10,7 +10,11 @@ const AuthNavigator = () => {
   return (
     <Stack.Navigator initialRouteName={ROUTES.LOGIN}>
       <Stack.Screen name={ROUTES.REGISTER} component={Register} />
-      <Stack.Screen name={ROUTES.LOGIN} component={Login} />
+      <Stack.Screen
+        name={ROUTES.LOGIN}
+        component={Login}
+        options={{ headerShown: false }}
+      />
       <Stack.Screen
         name={ROUTES.FORGOT_PASSWORD}
         component={ForgotPassword}

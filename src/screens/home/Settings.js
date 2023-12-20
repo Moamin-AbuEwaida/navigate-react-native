@@ -22,7 +22,11 @@ const Settings = ({ navigation }) => {
         <Text style={styles.buttonText}>Go To Settings Detail</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.button} activeOpacity={0.8}>
+      <TouchableOpacity
+        onPress={() => navigation.navigate(ROUTES.LOGIN)}
+        style={styles.button}
+        activeOpacity={0.8}
+      >
         <Text style={styles.buttonText}>Log out</Text>
       </TouchableOpacity>
     </SafeAreaView>
