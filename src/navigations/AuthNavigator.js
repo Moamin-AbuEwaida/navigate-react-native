@@ -24,7 +24,11 @@ const AuthNavigator = () => {
           title: route.params.userId,
         })}
       />
-      <Stack.Screen name={ROUTES.HOME} component={BottomTabNavigator} />
+      <Stack.Screen
+        name={ROUTES.HOME}
+        component={BottomTabNavigator}
+        options={{ headerShown: false }}
+      />
     </Stack.Navigator>
   );
 };

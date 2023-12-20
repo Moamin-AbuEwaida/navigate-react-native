@@ -1,13 +1,34 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import React from "react";
 import { Home, Wallet, Notifications, Settings } from "../screens";
-import { ROUTES } from "../constants";
-
+import { ROUTES, COLORS } from "../constants";
+import Icon from "react-native-vector-icons/Ionicons";
 const Tab = createBottomTabNavigator();
 
 const BottomTabNavigator = () => {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      screenOptions={({ route }) => ({
+        headerShown: false,
+        tabBarActiveTintColor: COLORS.primary,
+        tabBarIcon: ({ color, size, focused }) => {
+          let iconName;
+
+          if (route.name === ROUTES.HOME_TAB) {
+            iconName = focused ? "ios-home-sharp" : "ios-home-outline";
+          } else if (route.name === ROUTES.SETTINGS) {
+            iconName = focused ? "settings" : "settings-outline";
+          } else if (route.name === ROUTES.WALLET) {
+            iconName = focused ? "wallet" : "wallet-outline";
+          } else if (route.name === ROUTES.NOTIFICATIONS) {
+            iconName = focused
+              ? "md-notifications-sharp"
+              : "md-notifications-outline";
+          }
+          return <Icon name={iconName} size={22} color={color} />;
+        },
+      })}
+    >
       <Tab.Screen name={ROUTES.HOME_TAB} component={Home} />
       <Tab.Screen name={ROUTES.WALLET} component={Wallet} />
       <Tab.Screen name={ROUTES.NOTIFICATIONS} component={Notifications} />

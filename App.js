@@ -4,19 +4,10 @@ import { SafeAreaView, StyleSheet, Text, View } from "react-native";
 import AuthNavigator from "./src/navigations/AuthNavigator";
 
 export default function App() {
+  // isAuthenticated = is ...
   return (
     <NavigationContainer>
-      {/* <SafeAreaView
-        style={{
-          flex: 1,
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <View>
-          <Text>Text</Text>
-        </View>
-      </SafeAreaView> */}
+      {/* {isAuthenticated ? AuthNavigator : DrawerNavigator} */}
       <AuthNavigator />
       <StatusBar />
     </NavigationContainer>
