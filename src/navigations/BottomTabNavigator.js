@@ -13,7 +13,7 @@ const BottomTabNavigator = () => {
     <Tab.Navigator
       screenOptions={({ route }) => ({
         headerShown: false,
-        // tabBarShowLabel: false,
+        tabBarShowLabel: false,
         tabBarStyle: styles.tabBarStyle,
         tabBarInactiveTintColor: COLORS.dark,
         tabBarActiveTintColor: COLORS.primary,
@@ -42,13 +42,26 @@ const BottomTabNavigator = () => {
           tabBarButton: (props) => <CustomTabBarButton {...props} />,
         }}
       />
-      <Tab.Screen name={ROUTES.WALLET} component={Wallet} />
-      <Tab.Screen name={ROUTES.NOTIFICATIONS} component={Notifications} />
+      <Tab.Screen
+        name={ROUTES.WALLET}
+        component={Wallet}
+        options={{
+          tabBarButton: (props) => <CustomTabBarButton {...props} />,
+        }}
+      />
+      <Tab.Screen
+        name={ROUTES.NOTIFICATIONS}
+        component={Notifications}
+        options={{
+          tabBarButton: (props) => <CustomTabBarButton {...props} />,
+        }}
+      />
       <Tab.Screen
         name={ROUTES.SETTINGS_NAVIGATOR}
         component={SettingsNavigator}
         options={{
           tabBarLabel: "Settings",
+          tabBarButton: (props) => <CustomTabBarButton {...props} />,
         }}
       />
     </Tab.Navigator>
@@ -64,5 +77,6 @@ const styles = StyleSheet.create({
     bottom: 15,
     right: 10,
     left: 10,
+    height: 92,
   },
 });
