@@ -4,12 +4,15 @@ import { Home, Wallet, Notifications, Settings } from "../screens";
 import { ROUTES, COLORS } from "../constants";
 import Icon from "react-native-vector-icons/Ionicons";
 import SettingsNavigator from "./SettingsNavigator";
-import { StyleSheet } from "react-native";
+import { Platform, StyleSheet, TouchableOpacity } from "react-native";
 import CustomTabBarButton from "../components/CustomTabBarButton";
 import CustomTabBar from "../components/CustomTabBar";
+import { useNavigation } from "@react-navigation/native";
+
 const Tab = createBottomTabNavigator();
 
 const BottomTabNavigator = () => {
+  const navigation = useNavigation();
   return (
     <Tab.Navigator
       tabBar={(props) => <CustomTabBar {...props} />}
@@ -65,9 +68,23 @@ const BottomTabNavigator = () => {
         component={SettingsNavigator}
         options={{
           tabBarLabel: "Settings",
+          title: "Setting",
+          headerShown: true,
           tabBarButton: (props) => (
             <CustomTabBarButton route="settings" {...props} />
           ),
+          headerRight: () => {
+            return (
+              <TouchableOpacity onPress={() => navigation.openDrawer()}>
+                <Icon
+                  name={Platform.OS === "ios" ? "ios-menu" : "md-menu"}
+                  size={30}
+                  color={COLORS.dark}
+                  style={{ marginRight: 10 }}
+                />
+              </TouchableOpacity>
+            );
+          },
         }}
       />
     </Tab.Navigator>
