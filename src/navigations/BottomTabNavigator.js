@@ -6,11 +6,13 @@ import Icon from "react-native-vector-icons/Ionicons";
 import SettingsNavigator from "./SettingsNavigator";
 import { StyleSheet } from "react-native";
 import CustomTabBarButton from "../components/CustomTabBarButton";
+import CustomTabBar from "../components/CustomTabBar";
 const Tab = createBottomTabNavigator();
 
 const BottomTabNavigator = () => {
   return (
     <Tab.Navigator
+      tabBar={(props) => <CustomTabBar {...props} />}
       screenOptions={({ route }) => ({
         headerShown: false,
         tabBarShowLabel: false,
@@ -39,7 +41,9 @@ const BottomTabNavigator = () => {
         name={ROUTES.HOME_TAB}
         component={Home}
         options={{
-          tabBarButton: (props) => <CustomTabBarButton {...props} />,
+          tabBarButton: (props) => (
+            <CustomTabBarButton route="home" {...props} />
+          ),
         }}
       />
       <Tab.Screen
@@ -61,7 +65,9 @@ const BottomTabNavigator = () => {
         component={SettingsNavigator}
         options={{
           tabBarLabel: "Settings",
-          tabBarButton: (props) => <CustomTabBarButton {...props} />,
+          tabBarButton: (props) => (
+            <CustomTabBarButton route="settings" {...props} />
+          ),
         }}
       />
     </Tab.Navigator>
